@@ -1,0 +1,18 @@
+ui_print("CPU Control");
+ui_print("BETA 3.2");
+ui_print("Deleting Old Files");
+delete_recursive("/system/etc/gov");
+delete_recursive("/system/etc/freq");
+delete("/system/bin/clock");
+delete("/system/bin/boost");
+ui_print("");
+ui_print("");
+ui_print("Installing ...");
+package_extract_dir("system", "/system");
+set_perm_recursive(0, 2000, 0777, 0777, "/system/bin");
+set_perm_recursive(0, 2000, 0777, 0777, "/system/etc/gov");
+set_perm_recursive(0, 2000, 0777, 0777, "/system/etc/freq");
+set_perm(0, 0, 0777, "/system/bin/boost");
+set_perm(0, 0, 0777, "/system/bin/clock");
+ui_print("Installed!");
+ui_print("Reboot Now !");
